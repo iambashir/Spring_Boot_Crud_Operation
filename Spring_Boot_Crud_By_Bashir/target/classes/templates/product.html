@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>All Product</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="text-center container"><br><br>
+ 
+ 	<div class="text-center text-success"><h2>All Products</h2></div><br>
+
+    <table class="table table-hover table-striped table-light table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Name</th>
+				<th scope="col">Description</th>
+				<th scope="col">Quantity</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p: ${product}">
+			<td th:text="${p.id}" />
+			<td th:text="${p.name}" />
+			<td th:text="${p.description}" />
+			<td th:text="${p.quantity}" />
+			<td>
+				<a th:href="@{/editProduct/(id=${p.id})}" class="btn btn-success ">Edit</a>&nbsp;&nbsp;
+				<a th:href="@{/deleteProduct/(id=${p.id})}" class="btn btn-danger ">Delete</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+	<a class="btn btn-primary my-1" th:href="@{/addProductForm}" >Add Product</a>
+	
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+	
+</body>
+</html>
